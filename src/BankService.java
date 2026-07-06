@@ -45,4 +45,31 @@ public class BankService {
         return null;
     }
 
+    // Deposit money into an account
+public void depositMoney(int accountNumber, double amount) {
+
+    BankAccount account = findAccount(accountNumber);
+
+    if (account == null) {
+
+        System.out.println("[ERROR] Account not found.");
+
+        return;
+    }
+
+
+    if (amount <= 0) {
+
+        System.out.println("[ERROR] Deposit amount must be greater than zero.");
+
+        return;
+    }
+
+
+    account.deposit(amount);
+
+    System.out.println("[INFO] Deposit successful.");
+
+    account.displayAccount();
+}
 }

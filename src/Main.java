@@ -15,8 +15,8 @@ public class Main {
 
             System.out.println("\n===== SIMPLE BANK =====");
             System.out.println("1. Create Account");
-            System.out.println("2. Exit");
-            System.out.print("Choose option: ");
+            System.out.println("2. Deposit Money");
+            System.out.println("3. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -54,11 +54,28 @@ public class Main {
 
                 case 2:
 
-                    running = false;
+                    System.out.print("Enter account number: ");
 
-                    System.out.println("Thank you for using SimpleBank.");
+                     int accountNumber = scanner.nextInt();
 
-                    break;
+
+                    System.out.print("Enter deposit amount: ");
+
+                    double amount = scanner.nextDouble();
+
+
+                     bankService.depositMoney(accountNumber, amount);
+
+                        break;
+
+
+                 case 3:
+
+                     running = false;
+
+                        System.out.println("Thank you for using SimpleBank.");
+
+                        break;  
 
 
                 default:
