@@ -1,5 +1,6 @@
 name: Java CI
 
+
 on:
   push:
     branches:
@@ -19,23 +20,35 @@ jobs:
 
     steps:
 
+      # Get project code
       - name: Checkout repository
         uses: actions/checkout@v4
 
 
-      - name: Set up Java
+      # Install Java
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
 
+      # Compile application files
       - name: Compile Java files
         run: |
           mkdir build
           javac -d build src/*.java
 
 
-      - name: Run tests
+      # Compile test files
+      - name: Compile tests
         run: |
-          echo "Tests will run here"
+          javac -cp "build:lib/junit-platform-console-standalone-1.10.0.jar" -d build test/*.java
+
+
+      # Run JUnit tests
+      - name: Run Tests
+        run: |
+          java -jar lib/junit-platform-console-standalone-1.10.0.jar \
+          --class-path build \
+          --scan-class-path
