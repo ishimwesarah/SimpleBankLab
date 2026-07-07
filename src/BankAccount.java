@@ -16,9 +16,16 @@ public class BankAccount {
         balance += amount;
     }
 
-    public void withdraw(double amount) {
-        balance -= amount;
+    public boolean withdraw(double amount) {
+
+    if (amount > balance) {
+        return false;
     }
+
+    balance -= amount;
+
+    return true;
+}
 
     public void displayAccount() {
         System.out.println("\n===== ACCOUNT DETAILS =====");

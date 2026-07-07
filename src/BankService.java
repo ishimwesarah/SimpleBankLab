@@ -72,4 +72,30 @@ public void depositMoney(int accountNumber, double amount) {
 
     account.displayAccount();
 }
+
+
+// Withdraw money from an account
+public void withdrawMoney(int accountNumber, double amount) {
+
+    BankAccount account = findAccount(accountNumber);
+
+    if (account == null) {
+        System.out.println("[ERROR] Account not found.");
+        return;
+    }
+
+    if (amount <= 0) {
+        System.out.println("[ERROR] Withdrawal amount must be greater than zero.");
+        return;
+    }
+
+    boolean success = account.withdraw(amount);
+
+    if (success) {
+        System.out.println("[INFO] Withdrawal successful.");
+        account.displayAccount();
+    } else {
+        System.out.println("[ERROR] Insufficient balance.");
+    }
+}
 }
