@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -19,8 +20,18 @@ public class Main {
             System.out.println("4. View Account Details");
             System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice;
+
+                try {
+                    choice = scanner.nextInt();
+                    scanner.nextLine();
+
+                } catch (InputMismatchException e) {
+                    System.out.println("Please enter a valid number[1-5].");
+                    scanner.nextLine();
+
+                    continue;
+                }
 
 
             switch (choice) {
