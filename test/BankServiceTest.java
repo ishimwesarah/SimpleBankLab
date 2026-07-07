@@ -54,4 +54,38 @@ public class BankServiceTest {
         );
     }
 
+    @Test
+public void testWithdrawMoney() {
+
+    BankAccount account = new BankAccount(
+            1001,
+            "Sarah",
+            AccountType.SAVINGS
+    );
+
+    account.deposit(1000);
+
+    boolean result = account.withdraw(300);
+
+    assertTrue(result);
+    assertEquals(700, account.getBalance());
+}
+
+
+@Test
+public void testWithdrawInsufficientBalance() {
+
+    BankAccount account = new BankAccount(
+            1002,
+            "John",
+            AccountType.CURRENT
+    );
+
+    account.deposit(500);
+
+    boolean result = account.withdraw(1000);
+
+    assertFalse(result);
+    assertEquals(500, account.getBalance());
+}
 }
