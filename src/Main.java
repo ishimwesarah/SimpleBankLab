@@ -13,11 +13,11 @@ public class Main {
 
         while (running) {
 
-            System.out.println("\n===== SIMPLE BANK =====");
             System.out.println("1. Create Account");
             System.out.println("2. Deposit Money");
             System.out.println("3. Withdraw Money");
-            System.out.println("4. Exit");
+            System.out.println("4. View Account Details");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -73,6 +73,14 @@ public class Main {
 
 
                 case 4:
+
+                    System.out.print("Enter account number: ");
+                    int viewAccountNumber = scanner.nextInt();
+                    bankService.viewAccount(viewAccountNumber);
+                    break;
+
+
+                case 5:
 
                     running = false;
                     System.out.println("Thank you for using SimpleBank.");

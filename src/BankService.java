@@ -98,4 +98,21 @@ public void withdrawMoney(int accountNumber, double amount) {
         System.out.println("[ERROR] Insufficient balance.");
     }
 }
+
+// View account details
+public void viewAccount(int accountNumber) {
+
+    BankAccount account = findAccount(accountNumber);
+
+    if (account == null) {
+
+        System.out.println("[ERROR] Account not found.");
+
+        return;
+    }
+
+    System.out.println("[INFO] Account found.");
+
+    account.displayAccount();
+}
 }
